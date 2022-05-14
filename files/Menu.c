@@ -11,7 +11,7 @@
 void wrap_line(Window *window, const char *line, uint8_t y, bool add)
 {
     const uint8_t len = strlen(line);
-    const uint16_t pos = (window->width - strlen(line)) / 2;
+    const uint16_t pos = (window->width - len) / 2;
     move_cursor(window, pos - 2, y);
     fputs(add ? "[" : " ", stdout);
     move_cursor(window, pos + len + 1, y);
@@ -80,17 +80,17 @@ void main_menu(Window *window, uint8_t *choice)
     }
 }
 
-void print_frame(Window *window, uint16_t size, uint16_t duration)
+void print_frame(Window *window, uint8_t size, uint16_t duration)
 {
     // top
     move_cursor(window, size, size);
     printf("%c", 218U); // ┌
-    for (int x = size + 1; x < window->width - size - 1; x++)
+    for (uint16_t x = size + 1; x < window->width - size - 1; x++)
         printf("%c", 196U); // ─
     printf("%c", 191U);     // ┐
 
     // sides
-    const int delay = duration / window->height; // ms
+    const uint16_t delay = duration / window->height; // ms
 
     for (int y = size + 1; y < window->height - size - 1; y++)
     {
@@ -107,7 +107,7 @@ void print_frame(Window *window, uint16_t size, uint16_t duration)
     move_cursor(window, size, window->height - size - 1);
     printf("%c", 192U); // └
     // top
-    for (int x = size + 1; x < window->width - size - 1; x++)
+    for (uint16_t x = size + 1; x < window->width - size - 1; x++)
         printf("%c", 196U); // ─
     printf("%c", 217U);     // ┘
 }
@@ -196,9 +196,9 @@ void settings_menu(Window *window, Settings *settings)
     }
 
     move_cursor(window, x_offset + strlen(text[2]), y_offset + 2);
-    fprintf(stdout, "%d ", settings->board_speed);
+    fprintf(stdout, "%d", settings->board_speed);
     move_cursor(window, x_offset + strlen(text[3]), y_offset + 3);
-    fprintf(stdout, "%d ", settings->ball_speed);
+    fprintf(stdout, "%d", settings->ball_speed);
     move_cursor(window, x_offset + strlen(text[1]), y_offset + 1);
     for (uint8_t i = 0; i < settings->board_width; i++)
         fputs(settings->board_symbol, stdout);

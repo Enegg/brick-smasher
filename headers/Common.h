@@ -39,7 +39,6 @@ typedef struct Settings
     const char *board_symbol;
 } Settings;
 
-void move_cursor(uint16_t x, uint16_t y);
 void move_cursor(Window *window, int16_t x, int16_t y);
 
 void get_console_size(Window *window);

@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-// initialize vector
+// initialize the vector
 errno_t init(Vector *vector, uint8_t size)
 {
     vector->ptr = (uint16_t *)calloc(size, sizeof(uint16_t));

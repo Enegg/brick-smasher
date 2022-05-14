@@ -6,7 +6,7 @@
 
 void main_menu(Window *window, uint8_t *choice);
 
-void print_frame(Window *window, uint16_t size, uint16_t duration);
+void print_frame(Window *window, uint8_t size, uint16_t duration);
 
 void score_menu(Window *window, Vector *scores);
 

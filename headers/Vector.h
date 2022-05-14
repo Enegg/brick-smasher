@@ -4,7 +4,7 @@
 typedef struct Vector
 {
     uint16_t *ptr;
-    uint8_t size;
+    uint16_t size;
     uint8_t elem;
 } Vector;
 
